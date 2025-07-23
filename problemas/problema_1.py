@@ -1,16 +1,22 @@
 from bio.ler_fasta import ler_fasta
 
-caminho_do_arquivo = "./arquivos/Flaviviridae-genomes.fasta"
-organismo_do_fasta = ler_fasta(caminho_do_arquivo)
+def rodar_problema_1():
+  caminho_do_arquivo = "./Projeto-BioInfo-FWLI/arquivos/Flaviviridae-genomes.fasta"
+  organismo_do_fasta = ler_fasta(caminho_do_arquivo)
+  lista_resultados_problema_1 =  [] 
 
-for organismo in organismo_do_fasta:
-  total_C_G = organismo.sequencia.count("C") + organismo.sequencia.count("G")
-  print(organismo.nome)
-  print("Percentual de A: ", round((organismo.sequencia.count("A")/organismo.sequencia.calcular_tamanho()*100),2),"%")
-  print("Percentual de T: ", round((organismo.sequencia.count("T")/organismo.sequencia.calcular_tamanho()*100),2),"%")
-  print("Percentual de C: ", round((organismo.sequencia.count("C")/organismo.sequencia.calcular_tamanho()*100),2),"%")
-  print("Percentual de G: ", round((organismo.sequencia.count("G")/organismo.sequencia.calcular_tamanho()*100),2),"%")
-  print("Percentual C+G = ", round((total_C_G/organismo.sequencia.calcular_tamanho()*100),2),"%")
-
-
-
+  for organismo in organismo_do_fasta:
+    seq = organismo.sequencia.upper()  
+    total_len = len(seq)
+    total_C_G = seq.count("C") + seq.count("G")
+    
+    dados_problema_1 = {"nome": organismo.nome,
+             "percentual_A": round((seq.count("A") / total_len) * 100, 2),
+             "percentual_T": round((seq.count("T") / total_len) * 100, 2),
+             "percentual_C": round((seq.count("C") / total_len) * 100, 2),
+             "percentual_G": round((seq.count("G") / total_len) * 100, 2),
+             "percentual_CG": round((total_C_G / total_len) * 100, 2)}
+    
+    lista_resultados_problema_1.append(dados_problema_1)  
+  
+  return (lista_resultados_problema_1)
