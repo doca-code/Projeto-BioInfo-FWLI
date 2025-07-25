@@ -18,7 +18,7 @@ def rodar_problema_2():
       if codon in DNA_STOP_CODONS:
         aminoacido ="Stop codon"
       else:
-        aminoacido = DNA_PARA_AMINOACIDO.get(codon, "Codigo invalido ou Stop codon")
+        aminoacido = DNA_PARA_AMINOACIDO.get(codon, "Codigo invalido")
       
       proteina.append(aminoacido)
     
